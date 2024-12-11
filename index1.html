@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Async/Await Example</title>
+</head>
+<body>
+    <h1>Food order</h1>
+    <p id="result">Calculating...</p>
+
+    <script>
+        
+        
+
+  // Async function for the entire process
+  async function calculateBill() {
+            let total = await getTotal(); // Get the total price
+            let finalBill = await applyDiscount(total); // Apply discount
+            document.getElementById("result").innerHTML = 'Final Bill: $${finalBill}' ; // Show result
+        }
+
+        // function to get the total price
+        function getTotal() {
+            return new Promise((resolve) => {
+                resolve(25); // Simulated total price
+            });
+        }
+
+        // function to apply a discount
+        function applyDiscount(total) {
+            return new Promise((resolve) => {
+                resolve(total - 5); // Subtract $5 as discount
+            });
+        }
+
+        // call the function
+        calculateBill();
+    </script>
+</body>
+</html>
